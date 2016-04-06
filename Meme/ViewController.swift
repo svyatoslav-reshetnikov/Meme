@@ -35,9 +35,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         shareButton.enabled = imagePickerView.image != nil ? true : false
+        
         subscribeToKeyboardNotifications()
+        
+        print(UIFont.familyNames())
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -153,7 +157,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let memeTextAttributes = [
             NSStrokeColorAttributeName : UIColor.blackColor(),
             NSForegroundColorAttributeName : UIColor.whiteColor(),
-            NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            //NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSFontAttributeName : UIFont(name: "FightThis", size: 40)!,
             NSStrokeWidthAttributeName : -2.0
         ]
         textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder!, attributes:memeTextAttributes)
