@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		E11B31CA1CB64FDF00FB07AF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11B31C91CB64FDF00FB07AF /* Extensions.swift */; };
+		E11B31D01CB6702800FB07AF /* BebasNeue Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E11B31CB1CB6702800FB07AF /* BebasNeue Light.otf */; };
+		E11B31D11CB6702800FB07AF /* BebasNeue Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E11B31CC1CB6702800FB07AF /* BebasNeue Regular.otf */; };
+		E11B31D21CB6702800FB07AF /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E11B31CD1CB6702800FB07AF /* Lato-Light.ttf */; };
+		E11B31D31CB6702800FB07AF /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E11B31CE1CB6702800FB07AF /* Lato-Medium.ttf */; };
+		E11B31D41CB6702800FB07AF /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E11B31CF1CB6702800FB07AF /* Lato-Regular.ttf */; };
 		E1306DB31CB28576001CD8CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1306DB21CB28576001CD8CB /* AppDelegate.swift */; };
 		E1306DB51CB28576001CD8CB /* MemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1306DB41CB28576001CD8CB /* MemeViewController.swift */; };
 		E1306DB81CB28576001CD8CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1306DB61CB28576001CD8CB /* Main.storyboard */; };
@@ -21,6 +26,11 @@
 
 /* Begin PBXFileReference section */
 		E11B31C91CB64FDF00FB07AF /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E11B31CB1CB6702800FB07AF /* BebasNeue Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Light.otf"; path = "Fonts/BebasNeue Light.otf"; sourceTree = "<group>"; };
+		E11B31CC1CB6702800FB07AF /* BebasNeue Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Regular.otf"; path = "Fonts/BebasNeue Regular.otf"; sourceTree = "<group>"; };
+		E11B31CD1CB6702800FB07AF /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Light.ttf"; path = "Fonts/Lato-Light.ttf"; sourceTree = "<group>"; };
+		E11B31CE1CB6702800FB07AF /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Medium.ttf"; path = "Fonts/Lato-Medium.ttf"; sourceTree = "<group>"; };
+		E11B31CF1CB6702800FB07AF /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Regular.ttf"; path = "Fonts/Lato-Regular.ttf"; sourceTree = "<group>"; };
 		E1306DAF1CB28575001CD8CB /* Meme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1306DB21CB28576001CD8CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1306DB41CB28576001CD8CB /* MemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +92,11 @@
 		E199EB711CB529DB0017F3C6 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				E11B31CB1CB6702800FB07AF /* BebasNeue Light.otf */,
+				E11B31CC1CB6702800FB07AF /* BebasNeue Regular.otf */,
+				E11B31CD1CB6702800FB07AF /* Lato-Light.ttf */,
+				E11B31CE1CB6702800FB07AF /* Lato-Medium.ttf */,
+				E11B31CF1CB6702800FB07AF /* Lato-Regular.ttf */,
 				E199EB781CB52FD40017F3C6 /* fightclub.ttf */,
 			);
 			name = fonts;
@@ -147,9 +162,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1306DBD1CB28576001CD8CB /* LaunchScreen.storyboard in Resources */,
+				E11B31D31CB6702800FB07AF /* Lato-Medium.ttf in Resources */,
+				E11B31D01CB6702800FB07AF /* BebasNeue Light.otf in Resources */,
+				E11B31D11CB6702800FB07AF /* BebasNeue Regular.otf in Resources */,
+				E11B31D41CB6702800FB07AF /* Lato-Regular.ttf in Resources */,
 				E199EB791CB52FD40017F3C6 /* fightclub.ttf in Resources */,
 				E1306DBA1CB28576001CD8CB /* Assets.xcassets in Resources */,
 				E1306DB81CB28576001CD8CB /* Main.storyboard in Resources */,
+				E11B31D21CB6702800FB07AF /* Lato-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
