@@ -31,13 +31,20 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         shareButton.enabled = imagePickerView.image != nil ? true : false
         
-        // Preset all textfields
-        for subview in self.view.subviews {
+        // Preset all textfields from suggestion
+        presetTextField(topTextField)
+        presetTextField(bottomTextField)
+        
+        // Previous version of code for preset text fields
+        // I think that this version more universal, because if view has a lot of uitextfields, this code saves your time
+        /*
+         for subview in self.view.subviews {
             if subview is UITextField {
                 let textField = subview as! UITextField
                 presetTextField(textField)
             }
-        }
+         }
+         */
         
         subscribeToKeyboardNotifications()
     }
