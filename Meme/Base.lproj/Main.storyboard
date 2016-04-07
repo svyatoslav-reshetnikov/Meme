@@ -36,13 +36,13 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="GTZ-kg-nIr"/>
                                     <barButtonItem title="Album" style="plain" id="iEo-kW-5Vi">
                                         <connections>
-                                            <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="ixH-Ys-Goj"/>
+                                            <action selector="pickAnImageSource:" destination="BYZ-38-t0r" id="nRt-F9-ZoY"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="YiU-w0-wR9"/>
-                                    <barButtonItem systemItem="camera" id="Rxv-NE-dk8">
+                                    <barButtonItem tag="1" systemItem="camera" id="Rxv-NE-dk8">
                                         <connections>
-                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="iMF-ty-bPJ"/>
+                                            <action selector="pickAnImageSource:" destination="BYZ-38-t0r" id="S5O-Ix-RLX"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="NSV-4h-HOY"/>

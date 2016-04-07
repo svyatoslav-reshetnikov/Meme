@@ -55,19 +55,16 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     // MARK: Actions
-    @IBAction func pickAnImageFromAlbum (sender: AnyObject) {
+    @IBAction func pickAnImageSource (sender: AnyObject) {
         
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        if sender.tag! == 0 {
+            imagePicker.sourceType = .PhotoLibrary
+        } else if sender.tag! == 1 {
+            imagePicker.sourceType = .Camera
+        }
         self.presentViewController(imagePicker, animated: true, completion: nil)
-    }
-    
-    @IBAction func pickAnImageFromCamera (sender: AnyObject) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-        presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func pickAnShare (sender: AnyObject) {
