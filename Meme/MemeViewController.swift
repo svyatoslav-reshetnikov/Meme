@@ -70,8 +70,14 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBAction func pickAnShare (sender: AnyObject) {
         let memedImage = self.generateMeme()
         let activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        activityViewController.completionWithItemsHandler = { activity, success, items, error in
+            // Save meme after share
+            if success {
+                self.saveMeme()
+            }
+        }
         // Present activity view controller. In completition block - save the meme
-        presentViewController(activityViewController, animated: true, completion: { _ in self.saveMeme()})
+        presentViewController(activityViewController, animated: true, completion: nil)
     }
     
     // Clear all data
