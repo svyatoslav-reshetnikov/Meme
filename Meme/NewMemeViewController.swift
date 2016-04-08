@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  NewMemeViewController.swift
 //  Meme
 //
 //  Created by SVYAT on 04.04.16.
@@ -8,18 +8,17 @@
 
 import UIKit
 
-class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var topNavBar: UINavigationBar!
     @IBOutlet weak var bottomToolbar: UIToolbar!
-    
-    var memes = [Meme]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,17 +33,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // Preset all textfields from suggestion
         presetTextField(topTextField)
         presetTextField(bottomTextField)
-        
-        // Previous version of code for preset text fields
-        // I think that this version more universal, because if view has a lot of uitextfields, this code saves your time
-        /*
-         for subview in self.view.subviews {
-            if subview is UITextField {
-                let textField = subview as! UITextField
-                presetTextField(textField)
-            }
-         }
-         */
         
         subscribeToKeyboardNotifications()
     }
@@ -78,6 +66,10 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
         // Present activity view controller. In completition block - save the meme
         presentViewController(activityViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func pickAnBack (sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // Clear all data
@@ -115,19 +107,19 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     // Change y coordinate only for bottomTextField
     func keyboardWillShow(notification: NSNotification) {
         if bottomTextField.isFirstResponder() {
-            self.view.frame.origin.y -= getKeyboardHeight(notification)
+            self.view.frame.origin.y = getKeyboardHeight(notification)  * -1
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if bottomTextField.isFirstResponder() {
-            self.view.frame.origin.y += getKeyboardHeight(notification)
+            self.view.frame.origin.y = 0
         }
     }
     
     func subscribeToKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MemeViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MemeViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NewMemeViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NewMemeViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
     
     func unsubscribeFromKeyboardNotifications() {
@@ -158,7 +150,10 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     // Save meme into Memes array
     func saveMeme() {
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imagePickerView.image!, memedImage: generateMeme())
-        memes.append(meme)
+        // Add it to the memes array in the Application Delegate
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     func presetTextField(textField: UITextField) {

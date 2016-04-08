@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E10ACDE81CB7C0300041C6F1 /* MemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10ACDE71CB7C0300041C6F1 /* MemeTableViewController.swift */; };
+		E10ACDEA1CB7C03E0041C6F1 /* MemeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10ACDE91CB7C03E0041C6F1 /* MemeCollectionViewController.swift */; };
+		E10ACDEF1CB7C9890041C6F1 /* MemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10ACDEE1CB7C9890041C6F1 /* MemeCell.swift */; };
+		E10ACDF11CB7CC500041C6F1 /* CustomPhotoAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10ACDF01CB7CC500041C6F1 /* CustomPhotoAlbum.swift */; };
 		E11B31CA1CB64FDF00FB07AF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11B31C91CB64FDF00FB07AF /* Extensions.swift */; };
 		E11B31D01CB6702800FB07AF /* BebasNeue Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E11B31CB1CB6702800FB07AF /* BebasNeue Light.otf */; };
 		E11B31D11CB6702800FB07AF /* BebasNeue Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E11B31CC1CB6702800FB07AF /* BebasNeue Regular.otf */; };
@@ -14,7 +18,7 @@
 		E11B31D31CB6702800FB07AF /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E11B31CE1CB6702800FB07AF /* Lato-Medium.ttf */; };
 		E11B31D41CB6702800FB07AF /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E11B31CF1CB6702800FB07AF /* Lato-Regular.ttf */; };
 		E1306DB31CB28576001CD8CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1306DB21CB28576001CD8CB /* AppDelegate.swift */; };
-		E1306DB51CB28576001CD8CB /* MemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1306DB41CB28576001CD8CB /* MemeViewController.swift */; };
+		E1306DB51CB28576001CD8CB /* NewMemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1306DB41CB28576001CD8CB /* NewMemeViewController.swift */; };
 		E1306DB81CB28576001CD8CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1306DB61CB28576001CD8CB /* Main.storyboard */; };
 		E1306DBA1CB28576001CD8CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1306DB91CB28576001CD8CB /* Assets.xcassets */; };
 		E1306DBD1CB28576001CD8CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1306DBB1CB28576001CD8CB /* LaunchScreen.storyboard */; };
@@ -25,6 +29,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E10ACDE71CB7C0300041C6F1 /* MemeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTableViewController.swift; sourceTree = "<group>"; };
+		E10ACDE91CB7C03E0041C6F1 /* MemeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeCollectionViewController.swift; sourceTree = "<group>"; };
+		E10ACDEE1CB7C9890041C6F1 /* MemeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeCell.swift; sourceTree = "<group>"; };
+		E10ACDF01CB7CC500041C6F1 /* CustomPhotoAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPhotoAlbum.swift; sourceTree = "<group>"; };
 		E11B31C91CB64FDF00FB07AF /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E11B31CB1CB6702800FB07AF /* BebasNeue Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Light.otf"; path = "Fonts/BebasNeue Light.otf"; sourceTree = "<group>"; };
 		E11B31CC1CB6702800FB07AF /* BebasNeue Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue Regular.otf"; path = "Fonts/BebasNeue Regular.otf"; sourceTree = "<group>"; };
@@ -33,7 +41,7 @@
 		E11B31CF1CB6702800FB07AF /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Regular.ttf"; path = "Fonts/Lato-Regular.ttf"; sourceTree = "<group>"; };
 		E1306DAF1CB28575001CD8CB /* Meme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1306DB21CB28576001CD8CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E1306DB41CB28576001CD8CB /* MemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeViewController.swift; sourceTree = "<group>"; };
+		E1306DB41CB28576001CD8CB /* NewMemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMemeViewController.swift; sourceTree = "<group>"; };
 		E1306DB71CB28576001CD8CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E1306DB91CB28576001CD8CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1306DBC1CB28576001CD8CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,6 +63,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E10ACDEB1CB7C2130041C6F1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E10ACDE71CB7C0300041C6F1 /* MemeTableViewController.swift */,
+				E10ACDE91CB7C03E0041C6F1 /* MemeCollectionViewController.swift */,
+				E1306DB41CB28576001CD8CB /* NewMemeViewController.swift */,
+				E199EB7A1CB537A40017F3C6 /* SettingsViewController.swift */,
+				E10ACDEE1CB7C9890041C6F1 /* MemeCell.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E10ACDEC1CB7C22C0041C6F1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E1A795281CB39A4E00EB44DE /* Meme.swift */,
+				E10ACDF01CB7CC500041C6F1 /* CustomPhotoAlbum.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		E10ACDED1CB7C2380041C6F1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E11B31C91CB64FDF00FB07AF /* Extensions.swift */,
+				E199EB7C1CB5385A0017F3C6 /* Utils.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		E1306DA61CB28575001CD8CB = {
 			isa = PBXGroup;
 			children = (
@@ -74,13 +112,11 @@
 		E1306DB11CB28576001CD8CB /* Meme */ = {
 			isa = PBXGroup;
 			children = (
+				E10ACDED1CB7C2380041C6F1 /* Utils */,
+				E10ACDEC1CB7C22C0041C6F1 /* Models */,
+				E10ACDEB1CB7C2130041C6F1 /* ViewControllers */,
 				E199EB711CB529DB0017F3C6 /* fonts */,
 				E1306DB21CB28576001CD8CB /* AppDelegate.swift */,
-				E1A795281CB39A4E00EB44DE /* Meme.swift */,
-				E1306DB41CB28576001CD8CB /* MemeViewController.swift */,
-				E199EB7A1CB537A40017F3C6 /* SettingsViewController.swift */,
-				E11B31C91CB64FDF00FB07AF /* Extensions.swift */,
-				E199EB7C1CB5385A0017F3C6 /* Utils.swift */,
 				E1306DB61CB28576001CD8CB /* Main.storyboard */,
 				E1306DB91CB28576001CD8CB /* Assets.xcassets */,
 				E1306DBB1CB28576001CD8CB /* LaunchScreen.storyboard */,
@@ -180,10 +216,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E10ACDEF1CB7C9890041C6F1 /* MemeCell.swift in Sources */,
 				E199EB7D1CB5385A0017F3C6 /* Utils.swift in Sources */,
+				E10ACDE81CB7C0300041C6F1 /* MemeTableViewController.swift in Sources */,
+				E10ACDF11CB7CC500041C6F1 /* CustomPhotoAlbum.swift in Sources */,
 				E11B31CA1CB64FDF00FB07AF /* Extensions.swift in Sources */,
 				E1A795291CB39A4E00EB44DE /* Meme.swift in Sources */,
-				E1306DB51CB28576001CD8CB /* MemeViewController.swift in Sources */,
+				E10ACDEA1CB7C03E0041C6F1 /* MemeCollectionViewController.swift in Sources */,
+				E1306DB51CB28576001CD8CB /* NewMemeViewController.swift in Sources */,
 				E1306DB31CB28576001CD8CB /* AppDelegate.swift in Sources */,
 				E199EB7B1CB537A40017F3C6 /* SettingsViewController.swift in Sources */,
 			);
