@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Realm
+import RealmSwift
 
 class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
@@ -20,8 +22,16 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var topNavBar: UINavigationBar!
     @IBOutlet weak var bottomToolbar: UIToolbar!
     
+    var defaultMeme: Meme?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let meme = defaultMeme {
+            self.topTextField.text = meme.valueForKey("topText") as? String
+            self.bottomTextField.text = meme.valueForKey("bottomText") as? String
+            self.imagePickerView.image = UIImage(data: meme.valueForKey("imageData") as! NSData, scale:1.0)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -149,11 +159,21 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     // Save meme into Memes array
     func saveMeme() {
-        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imagePickerView.image!, memedImage: generateMeme())
+        //let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imagePickerView.image!, memedImage: generateMeme())
         // Add it to the memes array in the Application Delegate
-        let object = UIApplication.sharedApplication().delegate
-        let appDelegate = object as! AppDelegate
-        appDelegate.memes.append(meme)
+        let meme = Meme()
+        meme.topText = topTextField.text
+        meme.bottomText = bottomTextField.text
+        meme.imageData = UIImagePNGRepresentation(imagePickerView.image!)
+        meme.memedImageData = UIImagePNGRepresentation(generateMeme())
+        
+        // Realms are used to group data together
+        let realm = try! Realm() // Create realm pointing to default file
+        
+        // Save your object
+        realm.beginWrite()
+        realm.add(meme)
+        try! realm.commitWrite()
     }
     
     func presetTextField(textField: UITextField) {

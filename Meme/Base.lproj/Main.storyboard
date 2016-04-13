@@ -20,23 +20,51 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="67" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8be-5i-8ft">
-                                <rect key="frame" x="20" y="0.0" width="560" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemeCell" rowHeight="67" id="7pT-Z5-u3X" customClass="MemeCell" customModule="Meme" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="560" height="67"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7pT-Z5-u3X" id="hav-vu-rpi">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="66"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tm5-ze-biE">
-                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="66"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tm5-ze-biE">
+                                                    <rect key="frame" x="8" y="0.0" width="90" height="66"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="90" id="OLR-GZ-Tok"/>
+                                                    </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gak-Rh-MgR">
+                                                    <rect key="frame" x="106" y="8" width="486" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n8X-fh-Mjg">
+                                                    <rect key="frame" x="106" y="37" width="486" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Gak-Rh-MgR" secondAttribute="trailing" id="J93-i9-MUN"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="n8X-fh-Mjg" secondAttribute="trailing" id="MHE-29-EdC"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="Tm5-ze-biE" secondAttribute="leading" id="QLX-PO-ZYS"/>
+                                                <constraint firstItem="Gak-Rh-MgR" firstAttribute="leading" secondItem="Tm5-ze-biE" secondAttribute="trailing" constant="8" id="Qvj-mK-ml5"/>
+                                                <constraint firstItem="Tm5-ze-biE" firstAttribute="top" secondItem="hav-vu-rpi" secondAttribute="topMargin" constant="-8" id="ZdW-2H-FQm"/>
+                                                <constraint firstItem="n8X-fh-Mjg" firstAttribute="leading" secondItem="Tm5-ze-biE" secondAttribute="trailing" constant="8" id="gJ8-1Q-z9s"/>
+                                                <constraint firstAttribute="topMargin" secondItem="Gak-Rh-MgR" secondAttribute="top" id="iHZ-GV-T0q"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="n8X-fh-Mjg" secondAttribute="bottom" id="u6p-Gu-tCt"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Tm5-ze-biE" secondAttribute="bottom" constant="-8" id="yaM-Cp-yCs"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="bottomText" destination="n8X-fh-Mjg" id="QGM-p7-G4c"/>
                                             <outlet property="memeImage" destination="Tm5-ze-biE" id="huk-k9-zAf"/>
+                                            <outlet property="topText" destination="Gak-Rh-MgR" id="T8u-HD-mjZ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -50,15 +78,15 @@
                         <constraints>
                             <constraint firstItem="E67-Mf-lSJ" firstAttribute="top" secondItem="8be-5i-8ft" secondAttribute="bottom" id="7ap-iy-hXn"/>
                             <constraint firstItem="8be-5i-8ft" firstAttribute="top" secondItem="P9R-h4-RnI" secondAttribute="bottom" id="dXp-gu-uto"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="8be-5i-8ft" secondAttribute="leading" id="lwL-4t-i9L"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="8be-5i-8ft" secondAttribute="trailing" id="v4Y-Lx-MF2"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="8be-5i-8ft" secondAttribute="leading" constant="20" id="lwL-4t-i9L"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8be-5i-8ft" secondAttribute="trailing" constant="-20" id="v4Y-Lx-MF2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dDY-iG-F55">
                         <barButtonItem key="leftBarButtonItem" title="Item" id="yXe-6l-iHn"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Iic-4n-6nl">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="popoverPresentation" popoverAnchorBarButtonItem="Iic-4n-6nl" id="MbI-r8-6ei">
+                                <segue destination="BYZ-38-t0r" kind="popoverPresentation" identifier="newMeme" popoverAnchorBarButtonItem="Iic-4n-6nl" id="MbI-r8-6ei">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
