@@ -49,10 +49,9 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MemeCell") as! MemeCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("MemeTableCell") as! MemeTableCell
         
         let meme = realm.objects(Meme)[indexPath.row]
-        print(meme)
         cell.topText.text = meme.valueForKey("topText") as? String
         cell.bottomText.text = meme.valueForKey("bottomText") as? String
         if let data = meme.valueForKey("memedImageData") as? NSData {
@@ -62,16 +61,30 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell
     }
     
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            let meme = realm.objects(Meme)[indexPath.row]
+            try! realm.write {
+                realm.delete(meme)
+            }
+            memesTableView.reloadData()
+        }
+    }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let meme = realm.objects(Meme)[indexPath.row]
-        self.performSegueWithIdentifier("newMeme", sender: meme)
+        self.performSegueWithIdentifier("memeEditor", sender: meme)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "newMeme") {
-            let newMemeViewController = (segue.destinationViewController as! NewMemeViewController)
+        if(segue.identifier == "memeEditor") {
+            let newMemeViewController = (segue.destinationViewController as! MemeEditorViewController)
             if let meme = sender as? Meme {
                 newMemeViewController.defaultMeme = meme
             }

@@ -1,5 +1,5 @@
 //
-//  NewMemeViewController.swift
+//  MemeEditorViewController.swift
 //  Meme
 //
 //  Created by SVYAT on 04.04.16.
@@ -10,7 +10,7 @@ import UIKit
 import Realm
 import RealmSwift
 
-class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -128,8 +128,8 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     func subscribeToKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NewMemeViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NewMemeViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MemeEditorViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MemeEditorViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
     
     func unsubscribeFromKeyboardNotifications() {
@@ -157,20 +157,15 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate, 
         return memedImage
     }
     
-    // Save meme into Memes array
+    // Save meme use Realm
     func saveMeme() {
-        //let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imagePickerView.image!, memedImage: generateMeme())
-        // Add it to the memes array in the Application Delegate
         let meme = Meme()
         meme.topText = topTextField.text
         meme.bottomText = bottomTextField.text
         meme.imageData = UIImagePNGRepresentation(imagePickerView.image!)
         meme.memedImageData = UIImagePNGRepresentation(generateMeme())
         
-        // Realms are used to group data together
-        let realm = try! Realm() // Create realm pointing to default file
-        
-        // Save your object
+        let realm = try! Realm()
         realm.beginWrite()
         realm.add(meme)
         try! realm.commitWrite()

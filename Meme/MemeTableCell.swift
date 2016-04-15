@@ -1,5 +1,5 @@
 //
-//  MemeCell.swift
+//  MemeTableCell.swift
 //  Meme
 //
 //  Created by SVYAT on 08.04.16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MemeCell: UITableViewCell {
+class MemeTableCell: UITableViewCell {
     @IBOutlet weak var memeImage: UIImageView!
     @IBOutlet weak var topText: UILabel!
     @IBOutlet weak var bottomText: UILabel!
