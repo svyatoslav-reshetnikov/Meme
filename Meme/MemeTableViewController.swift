@@ -66,7 +66,7 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+        if (editingStyle == .Delete) {
             let meme = realm.objects(Meme)[indexPath.row]
             try! realm.write {
                 realm.delete(meme)
