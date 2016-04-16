@@ -8,13 +8,13 @@
 
 import Foundation
 import UIKit
-import Realm
-import RealmSwift
+import CoreData
 
 class MemeTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var memesTableView: UITableView!
-    let realm = try! Realm()
+    
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         // Tab bar
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.darkGrayColor()], forState:.Normal)
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState:.Selected)
-        for item in (self.tabBarController?.tabBar.items)! as [UITabBarItem] {
+        for item in (tabBarController?.tabBar.items)! as [UITabBarItem] {
             if let image = item.image {
                 item.image = image.imageWithColor(UIColor.darkGrayColor()).imageWithRenderingMode(.AlwaysOriginal)
                 item.selectedImage = image.imageWithColor(UIColor.whiteColor()).imageWithRenderingMode(.AlwaysOriginal)
@@ -45,16 +45,16 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return realm.objects(Meme).count
+        return appDelegate.memes.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MemeTableCell") as! MemeTableCell
         
-        let meme = realm.objects(Meme)[indexPath.row]
-        cell.topText.text = meme.valueForKey("topText") as? String
-        cell.bottomText.text = meme.valueForKey("bottomText") as? String
-        if let data = meme.valueForKey("memedImageData") as? NSData {
+        let meme = appDelegate.memes[indexPath.row]
+        cell.topText.text = meme.topText
+        cell.bottomText.text = meme.bottomText
+        if let data = meme.memedImageData {
             cell.memeImage.image = UIImage(data:data, scale:1.0)
         }
         
@@ -67,26 +67,29 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == .Delete) {
-            let meme = realm.objects(Meme)[indexPath.row]
-            try! realm.write {
-                realm.delete(meme)
-            }
-            memesTableView.reloadData()
+            // remove the deleted item from the model
+            let context:NSManagedObjectContext = appDelegate.managedObjectContext!
+            context.deleteObject(appDelegate.objects[indexPath.row])
+            appDelegate.objects.removeAtIndex(indexPath.row)
+            appDelegate.memes.removeAtIndex(indexPath.row)
+            try! context.save()
+            // remove the deleted item from the `UITableView`
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        let meme = realm.objects(Meme)[indexPath.row]
-        self.performSegueWithIdentifier("memeEditor", sender: meme)
+        performSegueWithIdentifier("memeDetail", sender: indexPath)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "memeEditor") {
-            let newMemeViewController = (segue.destinationViewController as! MemeEditorViewController)
-            if let meme = sender as? Meme {
-                newMemeViewController.defaultMeme = meme
+        if(segue.identifier == "memeDetail") {
+            let memeDetailViewController = (segue.destinationViewController as! MemeDetailViewController)
+            if let indexPath = sender as? NSIndexPath {
+                let meme = appDelegate.memes[indexPath.row]
+                memeDetailViewController.meme = meme
             }
         }
     }

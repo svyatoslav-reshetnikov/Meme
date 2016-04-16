@@ -93,11 +93,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="memesTableView" destination="8be-5i-8ft" id="Kua-nG-PXD"/>
+                        <segue destination="ZBa-fo-JRi" kind="presentation" identifier="memeDetail" id="Hql-4G-9CR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hyL-2i-ceq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-73" y="877"/>
+            <point key="canvasLocation" x="-73" y="795"/>
         </scene>
         <!--Meme Collection View Controller-->
         <scene sceneID="7sW-ma-KUB">
@@ -169,11 +170,72 @@
                     </navigationItem>
                     <connections>
                         <outlet property="memesCollectionView" destination="tCj-bH-CXS" id="5ef-7z-NAw"/>
+                        <segue destination="ZBa-fo-JRi" kind="presentation" identifier="memeDetail" id="pmG-LF-FB4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQc-WJ-8vM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-73" y="1581"/>
+        </scene>
+        <!--Meme Detail View Controller-->
+        <scene sceneID="XBh-ma-geo">
+            <objects>
+                <viewController id="ZBa-fo-JRi" customClass="MemeDetailViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wXy-mZ-dWL"/>
+                        <viewControllerLayoutGuide type="bottom" id="N1t-62-pfA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ff7-6l-aVQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTz-ke-4ww">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <color key="barTintColor" red="0.69019607839999997" green="0.3803921569" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Title" id="XbO-Qk-MUS">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="iTS-7S-S9h">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="pickAnBack:" destination="ZBa-fo-JRi" id="qSA-ca-b42"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="rbF-C0-urS">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="pickAnEdit:" destination="ZBa-fo-JRi" id="AMa-ot-Ij0"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nae-jR-560">
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nae-jR-560" firstAttribute="leading" secondItem="ff7-6l-aVQ" secondAttribute="leadingMargin" constant="-20" id="9VD-ia-sEL"/>
+                            <constraint firstItem="DTz-ke-4ww" firstAttribute="leading" secondItem="ff7-6l-aVQ" secondAttribute="leadingMargin" constant="-20" id="KDu-pM-mmf"/>
+                            <constraint firstItem="nae-jR-560" firstAttribute="top" secondItem="DTz-ke-4ww" secondAttribute="bottom" id="O9r-gr-Xc2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nae-jR-560" secondAttribute="trailing" constant="-20" id="Opb-xZ-nQb"/>
+                            <constraint firstItem="N1t-62-pfA" firstAttribute="top" secondItem="nae-jR-560" secondAttribute="bottom" id="UiR-8l-Coi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DTz-ke-4ww" secondAttribute="trailing" constant="-20" id="g4Y-bs-Wyc"/>
+                            <constraint firstItem="DTz-ke-4ww" firstAttribute="top" secondItem="wXy-mZ-dWL" secondAttribute="bottom" id="nyK-bd-lFk"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="memedImage" destination="nae-jR-560" id="HWg-Rv-uKp"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="memeEditor" id="205-2l-QY1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qSc-nD-z3n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="889" y="823"/>
         </scene>
         <!--Meme Editor View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -286,7 +348,6 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="backButton" destination="mU5-48-hWM" id="4CZ-xD-gbg"/>
                         <outlet property="bottomTextField" destination="lxU-ot-iiJ" id="P0K-5R-zQH"/>
                         <outlet property="bottomToolbar" destination="ApL-7B-BLh" id="Bp8-Dy-Xkj"/>
                         <outlet property="cameraButton" destination="Rxv-NE-dk8" id="ILn-gi-Se4"/>
@@ -299,7 +360,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="765" y="1199"/>
+            <point key="canvasLocation" x="729" y="1605"/>
         </scene>
         <!--Collection-->
         <scene sceneID="hz5-II-AvF">
@@ -342,7 +403,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0F-mg-B1N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-777" y="877"/>
+            <point key="canvasLocation" x="-781" y="823"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="StT-0H-HVb">
@@ -432,7 +493,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jDa-Ax-gvW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1548" y="1199"/>
+            <point key="canvasLocation" x="1553" y="1605"/>
         </scene>
     </scenes>
     <resources>
@@ -441,6 +502,7 @@
         <image name="icon_tableview" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MbI-r8-6ei"/>
+        <segue reference="pmG-LF-FB4"/>
+        <segue reference="205-2l-QY1"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,13 +7,11 @@
 //
 
 import UIKit
-import Realm
-import RealmSwift
 
 class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var memesCollectionView: UICollectionView!
-    let realm = try! Realm()
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,15 +26,15 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return realm.objects(Meme).count
+        return appDelegate.memes.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = memesCollectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionCell", forIndexPath: indexPath) as! MemeCollectionCell
         
-        let meme = realm.objects(Meme)[indexPath.row]
-        if let data = meme.valueForKey("memedImageData") as? NSData {
+        let meme = appDelegate.memes[indexPath.row]
+        if let data = meme.memedImageData {
             cell.memedImage.image = UIImage(data:data, scale:1.0)
         }
         
@@ -44,15 +42,15 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let meme = realm.objects(Meme)[indexPath.row]
-        self.performSegueWithIdentifier("memeEditor", sender: meme)
+        performSegueWithIdentifier("memeDetail", sender: indexPath)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "memeEditor") {
-            let newMemeViewController = (segue.destinationViewController as! MemeEditorViewController)
-            if let meme = sender as? Meme {
-                newMemeViewController.defaultMeme = meme
+        if(segue.identifier == "memeDetail") {
+            let memeDetailViewController = (segue.destinationViewController as! MemeDetailViewController)
+            if let indexPath = sender as? NSIndexPath {
+                let meme = appDelegate.memes[indexPath.row]
+                memeDetailViewController.meme = meme
             }
         }
     }

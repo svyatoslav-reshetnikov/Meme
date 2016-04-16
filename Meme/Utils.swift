@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class Utils {
     
@@ -26,5 +27,4 @@ class Utils {
         }
         statusBar.backgroundColor = color
     }
-    
 }

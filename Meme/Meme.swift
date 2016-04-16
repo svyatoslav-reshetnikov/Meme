@@ -7,11 +7,8 @@
 //
 
 import Foundation
-import UIKit
-import Realm
-import RealmSwift
 
-class Meme: Object {
+struct Meme {
     var topText: String?
     var bottomText: String?
     var imageData: NSData?

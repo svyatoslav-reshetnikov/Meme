@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import Realm
-import RealmSwift
+import CoreData
 
 class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
@@ -16,7 +15,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
-    @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var topNavBar: UINavigationBar!
@@ -24,13 +22,15 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     var defaultMeme: Meme?
     
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let meme = defaultMeme {
-            self.topTextField.text = meme.valueForKey("topText") as? String
-            self.bottomTextField.text = meme.valueForKey("bottomText") as? String
-            self.imagePickerView.image = UIImage(data: meme.valueForKey("imageData") as! NSData, scale:1.0)
+            topTextField.text = meme.topText
+            bottomTextField.text = meme.bottomText
+            imagePickerView.image = UIImage(data: meme.imageData! , scale:1.0)
         }
     }
     
@@ -62,11 +62,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         } else if sender.tag! == 1 {
             imagePicker.sourceType = .Camera
         }
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func pickAnShare (sender: AnyObject) {
-        let memedImage = self.generateMeme()
+        let memedImage = generateMeme()
         let activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         activityViewController.completionWithItemsHandler = { activity, success, items, error in
             // Save meme after share
@@ -79,7 +79,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func pickAnBack (sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     // Clear all data
@@ -94,11 +94,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.image = image
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: UITextFieldDelegate
@@ -117,13 +117,13 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     // Change y coordinate only for bottomTextField
     func keyboardWillShow(notification: NSNotification) {
         if bottomTextField.isFirstResponder() {
-            self.view.frame.origin.y = getKeyboardHeight(notification)  * -1
+            view.frame.origin.y = getKeyboardHeight(notification)  * -1
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if bottomTextField.isFirstResponder() {
-            self.view.frame.origin.y = 0
+            view.frame.origin.y = 0
         }
     }
     
@@ -145,8 +145,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         bottomToolbar.hidden = true
         
         // Render view to an image
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
@@ -159,16 +159,41 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     // Save meme use Realm
     func saveMeme() {
-        let meme = Meme()
+        var meme = Meme()
         meme.topText = topTextField.text
         meme.bottomText = bottomTextField.text
         meme.imageData = UIImagePNGRepresentation(imagePickerView.image!)
         meme.memedImageData = UIImagePNGRepresentation(generateMeme())
         
-        let realm = try! Realm()
-        realm.beginWrite()
-        realm.add(meme)
-        try! realm.commitWrite()
+        // Save meme into AppDelegate
+        appDelegate.memes.append(meme)
+        
+        // Store meme into CoreData
+        storeMeme(meme)
+    }
+    
+    func storeMeme (meme: Meme) {
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        //2
+        let entity =  NSEntityDescription.entityForName("Meme", inManagedObjectContext: managedContext)
+        
+        let memeStored = NSManagedObject(entity: entity!,
+                                     insertIntoManagedObjectContext:managedContext)
+        
+        memeStored.setValue(meme.topText, forKey: "topText")
+        memeStored.setValue(meme.bottomText, forKey: "bottomText")
+        memeStored.setValue(meme.imageData, forKey: "imageData")
+        memeStored.setValue(meme.memedImageData, forKey: "memedImageData")
+        
+        var error: NSError?
+        do {
+            try managedContext.save()
+        } catch let error1 as NSError {
+            error = error1
+            print("Could not save \(error), \(error?.userInfo)")
+        }
     }
     
     func presetTextField(textField: UITextField) {
