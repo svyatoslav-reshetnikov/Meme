@@ -175,24 +175,18 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func storeMeme (meme: Meme) {
         
         let managedContext = appDelegate.managedObjectContext!
-        
-        //2
         let entity =  NSEntityDescription.entityForName("Meme", inManagedObjectContext: managedContext)
-        
-        let memeStored = NSManagedObject(entity: entity!,
-                                     insertIntoManagedObjectContext:managedContext)
+        let memeStored = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
         
         memeStored.setValue(meme.topText, forKey: "topText")
         memeStored.setValue(meme.bottomText, forKey: "bottomText")
         memeStored.setValue(meme.imageData, forKey: "imageData")
         memeStored.setValue(meme.memedImageData, forKey: "memedImageData")
         
-        var error: NSError?
         do {
             try managedContext.save()
-        } catch let error1 as NSError {
-            error = error1
-            print("Could not save \(error), \(error?.userInfo)")
+        } catch {
+            
         }
     }
     

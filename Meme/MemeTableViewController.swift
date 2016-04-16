@@ -67,13 +67,13 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == .Delete) {
-            // remove the deleted item from the model
             let context:NSManagedObjectContext = appDelegate.managedObjectContext!
             context.deleteObject(appDelegate.objects[indexPath.row])
             appDelegate.objects.removeAtIndex(indexPath.row)
             appDelegate.memes.removeAtIndex(indexPath.row)
             try! context.save()
-            // remove the deleted item from the `UITableView`
+            
+            // remove the deleted item from the UITableView
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }
