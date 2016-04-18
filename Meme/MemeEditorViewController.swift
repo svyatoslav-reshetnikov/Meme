@@ -30,7 +30,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         if let meme = defaultMeme {
             topTextField.text = meme.topText
             bottomTextField.text = meme.bottomText
-            imagePickerView.image = UIImage(data: meme.imageData! , scale:1.0)
+            let image = UIImage(data: meme.imageData! , scale:1.0)
+            image?.imageRotatedByDegrees(90, flip: false)
+            imagePickerView.image = image
         }
     }
     
@@ -164,7 +166,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         var meme = Meme()
         meme.topText = topTextField.text
         meme.bottomText = bottomTextField.text
-        meme.imageData = UIImagePNGRepresentation(imagePickerView.image!)
+        meme.imageData = UIImageJPEGRepresentation(imagePickerView.image!, 1)
         meme.memedImageData = UIImagePNGRepresentation(generateMeme())
         
         // Save meme into AppDelegate
