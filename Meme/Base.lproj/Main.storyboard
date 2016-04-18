@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RUN-lF-ljh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RUN-lF-ljh">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -93,7 +93,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="memesTableView" destination="8be-5i-8ft" id="Kua-nG-PXD"/>
-                        <segue destination="ZBa-fo-JRi" kind="presentation" identifier="memeDetail" id="Hql-4G-9CR"/>
+                        <segue destination="ZBa-fo-JRi" kind="show" identifier="memeDetail" id="Hql-4G-9CR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hyL-2i-ceq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -186,45 +186,19 @@
                         <viewControllerLayoutGuide type="bottom" id="N1t-62-pfA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ff7-6l-aVQ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="44" width="600" height="507"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTz-ke-4ww">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <color key="barTintColor" red="0.69019607839999997" green="0.3803921569" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Title" id="XbO-Qk-MUS">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="iTS-7S-S9h">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <action selector="pickAnBack:" destination="ZBa-fo-JRi" id="qSA-ca-b42"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="rbF-C0-urS">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <action selector="pickAnEdit:" destination="ZBa-fo-JRi" id="AMa-ot-Ij0"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nae-jR-560">
-                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="507"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nae-jR-560" firstAttribute="leading" secondItem="ff7-6l-aVQ" secondAttribute="leadingMargin" constant="-20" id="9VD-ia-sEL"/>
-                            <constraint firstItem="DTz-ke-4ww" firstAttribute="leading" secondItem="ff7-6l-aVQ" secondAttribute="leadingMargin" constant="-20" id="KDu-pM-mmf"/>
-                            <constraint firstItem="nae-jR-560" firstAttribute="top" secondItem="DTz-ke-4ww" secondAttribute="bottom" id="O9r-gr-Xc2"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="nae-jR-560" secondAttribute="trailing" constant="-20" id="Opb-xZ-nQb"/>
-                            <constraint firstItem="N1t-62-pfA" firstAttribute="top" secondItem="nae-jR-560" secondAttribute="bottom" id="UiR-8l-Coi"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="DTz-ke-4ww" secondAttribute="trailing" constant="-20" id="g4Y-bs-Wyc"/>
-                            <constraint firstItem="DTz-ke-4ww" firstAttribute="top" secondItem="wXy-mZ-dWL" secondAttribute="bottom" id="nyK-bd-lFk"/>
+                            <constraint firstItem="nae-jR-560" firstAttribute="centerX" secondItem="ff7-6l-aVQ" secondAttribute="centerX" id="ITa-wY-Dn8"/>
+                            <constraint firstItem="nae-jR-560" firstAttribute="centerY" secondItem="ff7-6l-aVQ" secondAttribute="centerY" id="JuK-rh-XS1"/>
+                            <constraint firstItem="nae-jR-560" firstAttribute="top" secondItem="wXy-mZ-dWL" secondAttribute="bottom" id="d3Z-LU-5ej"/>
+                            <constraint firstItem="nae-jR-560" firstAttribute="leading" secondItem="ff7-6l-aVQ" secondAttribute="leading" id="kjU-u7-tJ4"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -252,14 +226,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AbR-Nz-oWL">
                                 <rect key="frame" x="0.0" y="44" width="600" height="512"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" placeholder="TOP" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="3Ps-es-eOB">
-                                <rect key="frame" x="20" y="104" width="560" height="21"/>
-                                <attributedString key="attributedText"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Cpj-mK-nTu"/>
-                                </connections>
-                            </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApL-7B-BLh">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <color key="backgroundColor" red="0.69019607839999997" green="0.3803921569" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
@@ -318,11 +284,19 @@
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" placeholder="BOTTOM" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="lxU-ot-iiJ">
-                                <rect key="frame" x="20" y="461" width="560" height="21"/>
+                                <rect key="frame" x="20" y="491" width="560" height="21"/>
                                 <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="XuW-2j-i5T"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" placeholder="TOP" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="3Ps-es-eOB">
+                                <rect key="frame" x="20" y="91" width="560" height="21"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Cpj-mK-nTu"/>
                                 </connections>
                             </textField>
                         </subviews>
@@ -334,7 +308,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="ApL-7B-BLh" secondAttribute="trailing" constant="-20" id="U3S-IV-k6H"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lxU-ot-iiJ" secondAttribute="trailing" id="aWU-Uv-pzC"/>
                             <constraint firstItem="LP6-9f-hdJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="bn7-Lf-roV"/>
-                            <constraint firstItem="AbR-Nz-oWL" firstAttribute="top" secondItem="3Ps-es-eOB" secondAttribute="bottom" constant="-81" id="bzk-Os-gwO"/>
+                            <constraint firstItem="AbR-Nz-oWL" firstAttribute="top" secondItem="3Ps-es-eOB" secondAttribute="bottom" constant="-68" id="bzk-Os-gwO"/>
                             <constraint firstItem="AbR-Nz-oWL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="44" id="cGl-YK-fcK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LP6-9f-hdJ" secondAttribute="trailing" constant="-20" id="exw-hh-5Mv"/>
                             <constraint firstItem="LP6-9f-hdJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="gKk-ek-OdG"/>
@@ -342,7 +316,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="lxU-ot-iiJ" secondAttribute="leading" id="nNq-t1-TI6"/>
                             <constraint firstItem="ApL-7B-BLh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="qyJ-dq-lNZ"/>
                             <constraint firstAttribute="leadingMargin" secondItem="3Ps-es-eOB" secondAttribute="leading" id="roB-83-ktz"/>
-                            <constraint firstItem="lxU-ot-iiJ" firstAttribute="top" secondItem="AbR-Nz-oWL" secondAttribute="bottom" constant="-95" id="xAj-rQ-cPg"/>
+                            <constraint firstItem="lxU-ot-iiJ" firstAttribute="top" secondItem="AbR-Nz-oWL" secondAttribute="bottom" constant="-65" id="xAj-rQ-cPg"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ApL-7B-BLh" secondAttribute="bottom" id="xge-IV-O7n"/>
                         </constraints>
                     </view>
@@ -502,7 +476,7 @@
         <image name="icon_tableview" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pmG-LF-FB4"/>
+        <segue reference="Hql-4G-9CR"/>
         <segue reference="205-2l-QY1"/>
     </inferredMetricsTieBreakers>
 </document>
