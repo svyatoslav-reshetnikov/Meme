@@ -85,8 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				E1A795281CB39A4E00EB44DE /* Meme.swift */,
-				E10ACDEE1CB7C9890041C6F1 /* MemeTableCell.swift */,
-				E1126F7D1CC11AD700C35E10 /* MemeCollectionCell.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -120,6 +118,7 @@
 		E1306DB11CB28576001CD8CB /* Meme */ = {
 			isa = PBXGroup;
 			children = (
+				E1EF5E121CC4E6C800F1A38F /* Views */,
 				E10ACDED1CB7C2380041C6F1 /* Utils */,
 				E10ACDEC1CB7C22C0041C6F1 /* Models */,
 				E10ACDEB1CB7C2130041C6F1 /* ViewControllers */,
@@ -145,6 +144,15 @@
 				E199EB781CB52FD40017F3C6 /* fightclub.ttf */,
 			);
 			name = fonts;
+			sourceTree = "<group>";
+		};
+		E1EF5E121CC4E6C800F1A38F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E10ACDEE1CB7C9890041C6F1 /* MemeTableCell.swift */,
+				E1126F7D1CC11AD700C35E10 /* MemeCollectionCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

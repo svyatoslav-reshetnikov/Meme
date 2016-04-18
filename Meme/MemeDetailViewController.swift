@@ -18,21 +18,12 @@ class MemeDetailViewController: UIViewController {
         super.viewDidLoad()
         memedImage.image = UIImage(data: meme.memedImageData!, scale:1.0)
         
-        let b = UIBarButtonItem( title: "Edit", style: .Plain, target: self, action: #selector(MemeDetailViewController.sayHello(_:))
-        )
+        let editButton = UIBarButtonItem( title: "Edit", style: .Plain, target: self, action: #selector(MemeDetailViewController.pickAnEdit(_:)))
         
-        self.navigationItem.setRightBarButtonItem(b, animated: true)
+        navigationItem.setRightBarButtonItem(editButton, animated: true)
     }
     
-    @IBAction func pickAnBack (sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    @IBAction func pickAnEdit (sender: AnyObject) {
-        performSegueWithIdentifier("memeEditor", sender: nil)
-    }
-    
-    func sayHello(sender: UIBarButtonItem) {
+    func pickAnEdit (sender: AnyObject) {
         performSegueWithIdentifier("memeEditor", sender: nil)
     }
     

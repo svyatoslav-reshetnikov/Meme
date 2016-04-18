@@ -72,6 +72,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             // Save meme after share
             if success {
                 self.saveMeme()
+                // Return to Sent Memes
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
         // Present activity view controller. In completition block - save the meme
